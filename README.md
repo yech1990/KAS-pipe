@@ -61,7 +61,7 @@ $ install_conda_env.sh
 ## Install reference genome on your linux
 ```Swift
 # Please create a directory where you want to install your reference genome and index.
-$ mkdir -p ~/Software/
+$ mkdir -p ~/Software/Genome/
 $ cd ~/Software/Genome/
 $ build_reference_genome.sh hg19 ~/Software/Genome/
 
