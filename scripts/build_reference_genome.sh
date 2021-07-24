@@ -34,7 +34,7 @@ if [[ "$#" -lt 2 ]]; then
   echo
   echo "This script is used to install reference genome <assembly> in a directory <dest_dir>."
   echo
-  echo "Supported genomes: mm9, mm10, hg19 and hg38"
+  echo "Supported genomes: mm9, mm10, mm39, hg19 and hg38"
   echo
   echo "Usage: build_reference_genome.sh <assembly> <dest_dir>"
   echo 
@@ -46,7 +46,7 @@ fi
 
 if test -z $1
    then
-   echo "please input the assembly of the reference genome you want to install(mm9, mm10, hg19 or hg38)" 
+   echo "please input the assembly of the reference genome you want to install(mm9, mm10, mm39, hg19 or hg38)" 
    exit
 fi
 
@@ -73,6 +73,9 @@ if [[ "${assembly}" == "mm9" ]]; then
 
 elif [[ "${assembly}" == "mm10" ]]; then
   REF_FA="http://hgdownload.soe.ucsc.edu/goldenPath/mm10/bigZips/mm10.fa.gz"
+
+elif [[ "${GENOME}" == "mm39" ]]; then
+  REF_FA="https://hgdownload.soe.ucsc.edu/goldenPath/mm39/bigZips/mm39.fa.gz"
   
 elif [[ "${assembly}" == "hg19" ]]; then
   REF_FA="http://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/hg19.fa.gz"
