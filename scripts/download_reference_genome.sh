@@ -22,7 +22,7 @@ if [[ "$#" -lt 2 ]]; then
   echo
   echo "This script is used to download reference genome."
   echo
-  echo "Supported genomes: mm9, mm10, hg19 and hg38"
+  echo "Supported genomes: mm9, mm10, mm39, hg19 and hg38"
   echo
   echo "Usage: download_reference_genome.sh <assembly> <dest_dir>"
   echo
@@ -32,7 +32,7 @@ fi
 
 if test -z $1 
 then
-	echo "please input the reference genome you want to download(mm9, mm10, hg19 and hg38)" 
+	echo "please input the reference genome you want to download(mm9, mm10, mm39, hg19, and hg38)" 
    exit 2
 fi
 
@@ -62,7 +62,10 @@ elif [[ "${assembly}" == "hg38" ]]; then
 REF_FA="http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz"
   
 elif [[ "${GENOME}" == "mm10" ]]; then
-REF_FA="http://hgdownload.soe.ucsc.edu/goldenPath/mm10/bigZips/mm10.fa.gz"    
+REF_FA="http://hgdownload.soe.ucsc.edu/goldenPath/mm10/bigZips/mm10.fa.gz"
+
+elif [[ "${GENOME}" == "mm39" ]]; then
+REF_FA="https://hgdownload.soe.ucsc.edu/goldenPath/mm39/bigZips/mm39.fa.gz"
 
 fi
 
