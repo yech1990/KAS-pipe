@@ -57,7 +57,7 @@ $ chmod 755 setup.sh
 $ ./setup.sh
 # Install conda environment.
 $ install_conda_env.sh
-# Activate KAS-seq pipeline. Note: make sure the KAS-pipe is activated before you use the KAS-pipe.
+# Activate KAS-seq pipeline. Note: make sure the KAS-pipe is activated before you use KAS-pipe.
 $ conda activate KAS-seq_pipeline
 ```
 ## Install reference genome on your linux
