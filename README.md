@@ -57,6 +57,8 @@ $ chmod 755 setup.sh
 $ ./setup.sh
 # Install conda environment.
 $ install_conda_env.sh
+# Activate KAS-pipe
+$ conda activate KAS-seq_pipeline
 ```
 ## Install reference genome on your linux
 ```Swift
