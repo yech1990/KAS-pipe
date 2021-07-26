@@ -50,7 +50,7 @@ KAS-pipe is an analysis pipeline for KAS-seq data. KAS-seq is a kethoxal-assiste
 Please make sure you have conda([miniconda3](https://docs.conda.io/en/latest/miniconda.html) or [anaconda3](https://www.anaconda.com/products/individual)) environment in your Linux in order to install the dependencies of KAS-pipe. Or you can follow the user guide to accomplish the conda installation: https://docs.conda.io/projects/conda/en/latest/user-guide/install/.
 
 ## Install KAS-pipe by cloning this repository
-```Swift
+```
 $ git clone https://github.com/Ruitulyu/KAS-pipe
 $ cd KAS-pipe
 $ chmod 755 setup.sh
@@ -61,7 +61,7 @@ $ install_conda_env.sh
 $ conda activate KAS-seq_pipeline
 ```
 ## Install reference genome on your linux
-```Swift
+```
 # Please create a directory where you want to install your reference genome and index.
 $ mkdir -p ~/Software/Genome/
 $ cd ~/Software/Genome/
@@ -80,7 +80,7 @@ Options:
 
 ## Adapter and low quality sequence trimming
 trim_adapter.sh - This script is used to trim adapter and low quality sequence from Raw KAS-seq data.
-```Swift
+```
 Single_end: trim_adapter.sh <Adapter_type> <Minimum_reads_length> <threads> <single> <raw_fastq_read>
 Paired_end: trim_adapter.sh <Adapter_type> <Minimum_reads_length> <threads> <paired> <raw_fastq_read1> <raw_fastq_read2>
 
@@ -104,7 +104,7 @@ Note: This shell script invokes the trim-galore, please refer http://www.bioinfo
 The optimal sequencing depth varies based on the size of the reference genome and the degree of single-stranded DNA expected. For studies of human samples, we recommend more than 50 million mapped reads per sample.
 
 map_KAS-seq.sh - This script is used to map KAS-seq data to the reference genome.
-```Swift
+```
 Usage:
 Single_end: map_KAS-seq.sh <bowtie2_index_path> <threads> <basename> <assembly> <single> <raw_fastq_read>
 Paired_end: map_KAS-seq.sh <bowtie2_index_path> <threads> <basename> <assembly> <paired> <raw_fastq_read1> <raw_fastq_read2>
@@ -155,7 +155,7 @@ Note: hs for Homo sapiens, mm for Mus musculus, ce for Caenorhabditis elegans, d
 
 ## Plot heatmap or metagene profiles
 plotSummary.sh - This script is used to generate heatmap or metagene profile for KAS-seq data(bigWig files are needed).
-```Swift
+```
 Usage:
 genes regions: plotSummary.sh <KAS_seq_files> <labels> <assembly> <threads> <basename> <regions> <plot_type> <colors> 
 peaks regions: plotSummary.sh <KAS_seq_files> <labels> <assembly> <threads> <basename> <regions> <plot_type> <colors> <peaks_list>
@@ -200,7 +200,7 @@ Successful KAS-seq data:
 
 ## KAS-seq correlation analysis
 plotCorrelation.sh - This script is used to generate correlation plot for KAS-seq data.
-```Swift
+```
 Note: BigWig files of KAS-seq data were needed
 Usage:
 Bins mode: plotCorrelation.sh <KAS_seq_files> <labels> <bins> <assembly> <basename> <threads> <plot_types>
@@ -270,7 +270,7 @@ diff_KAS-seq.sh outputs two files containing the peaks, bins or genes list with 
 ```
 ## Plot principal component analysis
 plotPCA.sh - This script is used to plot PCA analysis for KAS-seq data(bigWig files are needed).
-```Swift
+```
 Usage:
 Bins mode: plotPCA.sh <KAS_seq_files> <labels> <colors> <bins> <basename> <threads>
 Peaks mode: plotPCA.sh <KAS_seq_files> <labels> <colors> <peaks> <basename> <threads> <peaks_list>
@@ -300,7 +300,7 @@ Example: red blue green purple ---colors.txt
 ```
 ## Define single-stranded enhancers
 define_single-stranded_enhancers.sh - This script is used to define single-stranded(Entire KAS and Middle KAS) enhancers.
-```Swift
+```
 Usage: define_single-stranded_enhancers.sh <enhancer_list> <KAS_peaks> <assembly>.
 
 Example: nohup define_single-stranded_enhancers.sh enhancers.bed KAS_peaks.bed hg19 &
@@ -314,7 +314,7 @@ Note: KAS-seq peaks on genebody enhancers may be affected by elongation related 
 ```
 
 ## Introduction for other provided shell scripts in KAS-pipe
-```Swift
+```
 define_single-stranded_enhancers.sh       This script is used to define single-stranded enhancers.
 download_reference_genome.sh              This script is used to download reference genome <assembly> in a directory <dest_dir>.
 make_UCSC_files.sh                        This script is used to generate UCSC genome browser submit ready file.
