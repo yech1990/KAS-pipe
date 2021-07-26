@@ -123,6 +123,7 @@ Options:
 <raw_fastq_read2>         Input the read 2 of paired-end KAS-seq fastq files.
 -h or --help              Print the help.
 Note: map_KAS-seq.sh will generate KAS-seq deduplicated mapped reads(bam and bed files), density files(bedGraph file) and mapping summary file.
+python script "SAMtoBED" in map_KAS-seq.sh was developped by John M. Gaspar (jsh58@wildcats.unh.edu).
 
 If you want to transfer normalized bedGraph file to bigWig file, please refer to the provided shell scripts --normalize_KAS-seq.sh & --make_BigWig_files.sh.
 ```
