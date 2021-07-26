@@ -157,6 +157,28 @@ rm -f ${basename}_sorted.bam.bai
 rm -f ${basename}_sorted.bam
 rm -f ${basename}.bed 
 
+cd ..
+mkdir -p Bam_files
+cd Bam_files
+mv ../${basename}/${basename}_rmdup.bam ./
+mv ../${basename}/${basename}_rmdup.bam.bai ./
+cd ..
+
+mkdir -p BedGraph_files
+cd BedGraph_files
+mv ../${basename}/${basename}.ext150.bg ./
+cd ..
+
+mkdir -p Bed_files
+cd Bed_files
+mv ../${basename}/${basename}.ext150.bed ./
+cd ..
+
+mkdir -p Mapping_summary
+cd Mapping_summary
+mv ../${basename}/${basename}_KAS-seq_mapping_summary.txt ./
+cd ..
+
 elif [ "${paired_or_single}" == "paired" ]; then
 echo "Map paired-end KAS-seq data... "
 
@@ -192,6 +214,29 @@ rm -f ${basename}_sorted.bam.bai
 rm -f ${basename}_sorted.bam
 rm -f ${basename}.PCR_duplicates
 rm -f ${basename}.bed 
+
+cd ..
+mkdir -p Bam_files
+cd Bam_files
+mv ../${basename}/${basename}_rmdup.bam ./
+mv ../${basename}/${basename}_rmdup.bam.bai ./
+cd ..
+
+mkdir -p BedGraph_files
+cd BedGraph_files
+mv ../${basename}/${basename}.bg ./
+cd ..
+
+mkdir -p Bed_files
+cd Bed_files
+mv ../${basename}/${basename}.sort.bed ./
+cd ..
+
+mkdir -p Mapping_summary
+cd Mapping_summary
+mv ../${basename}/${basename}_KAS-seq_mapping_summary.txt ./
+cd ..
+
 fi
 
 echo "=== All done successfully."
