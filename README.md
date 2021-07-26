@@ -51,6 +51,7 @@ Please make sure you have conda([miniconda3](https://docs.conda.io/en/latest/min
 
 ## Install KAS-pipe by cloning this repository
 ```Swift
+<font color="red">
 $ git clone https://github.com/Ruitulyu/KAS-pipe
 $ cd KAS-pipe
 $ chmod 755 setup.sh
@@ -59,6 +60,7 @@ $ ./setup.sh
 $ install_conda_env.sh
 # Activate KAS-seq pipeline. Note: make sure the KAS-pipe is activated before you use KAS-pipe.
 $ conda activate KAS-seq_pipeline
+</font>
 ```
 ## Install reference genome on your linux
 ```Swift
