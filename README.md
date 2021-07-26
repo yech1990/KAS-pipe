@@ -130,7 +130,7 @@ If you want to transfer normalized bedGraph file to bigWig file, please refer to
 
 ## KAS-seq peaks calling
 call_KAS-seq_peaks.sh - This script is used to call peaks for KAS-seq data.
-```Swift
+```
 # Bed files or indexed bam files are needed for KAS-seq peaks calling.
 
 Usage:
@@ -231,7 +231,7 @@ If you want to plot heatmap, please make sure if you have more than 2 samples.
 
 ## Differential KAS-seq analysis
 diff_KAS-seq.sh - This script is used to identify regions with differential KAS-seq signal.
-```Swift
+```
 # KAS-seq bigWig files are needed.
 Usage:
 gene regions: diff_KAS-seq.sh <KAS_seq_files> <labels> <regions> <assembly> <basename> <threads> <diff_condition>
