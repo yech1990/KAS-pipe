@@ -50,7 +50,6 @@ KAS-pipe is an analysis pipeline for KAS-seq data. KAS-seq is a kethoxal-assiste
 Please make sure you have conda([miniconda3](https://docs.conda.io/en/latest/miniconda.html) or [anaconda3](https://www.anaconda.com/products/individual)) environment in your Linux in order to install the dependencies of KAS-pipe. Or you can follow the user guide to accomplish the conda installation: https://docs.conda.io/projects/conda/en/latest/user-guide/install/.
 
 ## Install KAS-pipe by cloning this repository
-<font color="red">
 ```Swift
 $ git clone https://github.com/Ruitulyu/KAS-pipe
 $ cd KAS-pipe
@@ -61,7 +60,6 @@ $ install_conda_env.sh
 # Activate KAS-seq pipeline. Note: make sure the KAS-pipe is activated before you use KAS-pipe.
 $ conda activate KAS-seq_pipeline
 ```
-</font>
 ## Install reference genome on your linux
 ```Swift
 # Please create a directory where you want to install your reference genome and index.
