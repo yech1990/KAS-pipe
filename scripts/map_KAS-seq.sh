@@ -196,13 +196,13 @@ samtools index ${basename}_sorted.bam
 echo "" >> ${basename}_KAS-seq_mapping_summary.txt
 echo "Reads duplication statistics" >> ${basename}_KAS-seq_mapping_summary.txt
 picard MarkDuplicates INPUT=${basename}_sorted.bam OUTPUT=${basename}_rmdup.bam METRICS_FILE=${basename}.PCR_duplicates REMOVE_DUPLICATES=true 
-cat ${basename}.PCR_duplicates >> ${basename}_KAS-seq_mapping_summary.txt
+grep "Warning" -v ${basename}.PCR_duplicates >> ${basename}_KAS-seq_mapping_summary.txt
 samtools index ${basename}_rmdup.bam
 
 # filter unique mapped reads
 # samtools view -b -q 10 ${basename}_rmdup.bam > ${basename}_unique.bam
 
-echo "" >> reads_statistics.txt
+echo "" >> ${basename}_KAS-seq_mapping_summary.txt
 echo "Average length of DNA fragments" >> ${basename}_KAS-seq_mapping_summary.txt
 samtools view -h  ${basename}_rmdup.bam | ${SH_SCRIPT_DIR}/../src/SAMtoBED  -i - -o  ${basename}.bed -x -v >> ${basename}_KAS-seq_mapping_summary.txt 2>&1
 # samtools view -h ${basename}_unique.bam | ${SH_SCRIPT_DIR}/../src/SAMtoBED  -i - -o  ${basename}.bed -x -v
