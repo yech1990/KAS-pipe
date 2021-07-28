@@ -196,6 +196,10 @@ samtools index ${basename}_sorted.bam
 echo "" >> ${basename}_KAS-seq_mapping_summary.txt
 echo "Reads duplication statistics" >> ${basename}_KAS-seq_mapping_summary.txt
 picard MarkDuplicates INPUT=${basename}_sorted.bam OUTPUT=${basename}_rmdup.bam METRICS_FILE=${basename}.PCR_duplicates REMOVE_DUPLICATES=true 
+
+# Please use the two lines below to remove PCR duplicates, if errors were reported for the reason of memory. 
+# PICARD_DIR=$(find ~/ -name "picard.jar" | head -n 1)
+# java -Xms512m -Xmx5g -jar $PICARD_DIR MarkDuplicates INPUT=${basename}_sorted.bam OUTPUT=${basename}_rmdup.bam METRICS_FILE=${basename}.PCR_duplicates REMOVE_DUPLICATES=true
 grep "Warning" -v ${basename}.PCR_duplicates >> ${basename}_KAS-seq_mapping_summary.txt
 samtools index ${basename}_rmdup.bam
 
