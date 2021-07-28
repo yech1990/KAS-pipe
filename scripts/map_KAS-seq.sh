@@ -135,15 +135,15 @@ echo "Map single-end KAS-seq data... "
 mkdir -p $basename
 cd $basename
 mv ../$raw_fastq_read1 ./
-echo "Single-end KAS-seq reads mapping statistics" > reads_statistics.txt
+echo "Single-end KAS-seq reads mapping statistics" > ${basename}_KAS-seq_mapping_summary.txt
 
-# All Output to reads_statistics.txt(alignment summary), nothing to the screen.
-bowtie2 -p $threads -x $bowtie2_index_path $raw_fastq_read1 -S ${basename}.sam >> reads_statistics.txt 2>&1
+# All Output to KAS-seq_mapping_summary.txt(alignment summary), nothing to the screen.
+bowtie2 -p $threads -x $bowtie2_index_path $raw_fastq_read1 -S ${basename}.sam >> ${basename}_KAS-seq_mapping_summary.txt 2>&1
 samtools sort -@ 3 ${basename}.sam -o ${basename}_sorted.bam
 samtools index ${basename}_sorted.bam
-echo "" >> reads_statistics.txt
-echo "Reads duplication statistics" >> reads_statistics.txt
-samtools rmdup -sS ${basename}_sorted.bam ${basename}_rmdup.bam >> reads_statistics.txt 2>&1
+echo "" >> ${basename}_KAS-seq_mapping_summary.txt
+echo "Reads duplication statistics" >> ${basename}_KAS-seq_mapping_summary.txt
+samtools rmdup -sS ${basename}_sorted.bam ${basename}_rmdup.bam >> ${basename}_KAS-seq_mapping_summary.txt 2>&1
 
 # filter unique mapped reads
 # samtools view -b -q 10 ${basename}_rmdup.bam > ${basename}_unique.bam
@@ -186,25 +186,25 @@ mkdir -p $basename
 cd $basename 
 mv ../$raw_fastq_read1 ./
 mv ../$raw_fastq_read2 ./
-echo "Paired-end KAS-seq reads mapping statistics" > reads_statistics.txt
+echo "Paired-end KAS-seq reads mapping statistics" > ${basename}_KAS-seq_mapping_summary.txt
 
-# All Output to reads_statistics.txt(alignment summary), nothing to the screen.
-bowtie2 -X 1000 -p $threads -x $bowtie2_index_path -1 $raw_fastq_read1 -2 $raw_fastq_read2 -S ${basename}.sam >> reads_statistics.txt 2>&1
+# All Output to KAS-seq_mapping_summary.txt(alignment summary), nothing to the screen.
+bowtie2 -X 1000 -p $threads -x $bowtie2_index_path -1 $raw_fastq_read1 -2 $raw_fastq_read2 -S ${basename}.sam >> ${basename}_KAS-seq_mapping_summary.txt 2>&1
 sed -i '/^@PG/d' ${basename}.sam
 samtools sort -@ 3 ${basename}.sam -o ${basename}_sorted.bam
 samtools index ${basename}_sorted.bam
-echo "" >> reads_statistics.txt
-echo "Reads duplication statistics" >> reads_statistics.txt
+echo "" >> ${basename}_KAS-seq_mapping_summary.txt
+echo "Reads duplication statistics" >> ${basename}_KAS-seq_mapping_summary.txt
 picard MarkDuplicates INPUT=${basename}_sorted.bam OUTPUT=${basename}_rmdup.bam METRICS_FILE=${basename}.PCR_duplicates REMOVE_DUPLICATES=true 
-cat ${basename}.PCR_duplicates >> reads_statistics.txt
+cat ${basename}.PCR_duplicates >> ${basename}_KAS-seq_mapping_summary.txt
 samtools index ${basename}_rmdup.bam
 
 # filter unique mapped reads
 # samtools view -b -q 10 ${basename}_rmdup.bam > ${basename}_unique.bam
 
 echo "" >> reads_statistics.txt
-echo "Average length of DNA fragments" >> reads_statistics.txt
-samtools view -h  ${basename}_rmdup.bam | ${SH_SCRIPT_DIR}/../src/SAMtoBED  -i - -o  ${basename}.bed -x -v >> reads_statistics.txt 2>&1
+echo "Average length of DNA fragments" >> ${basename}_KAS-seq_mapping_summary.txt
+samtools view -h  ${basename}_rmdup.bam | ${SH_SCRIPT_DIR}/../src/SAMtoBED  -i - -o  ${basename}.bed -x -v >> ${basename}_KAS-seq_mapping_summary.txt 2>&1
 # samtools view -h ${basename}_unique.bam | ${SH_SCRIPT_DIR}/../src/SAMtoBED  -i - -o  ${basename}.bed -x -v
 bedSort ${basename}.bed ${basename}.sort.bed
 genomeCoverageBed -bg -i ${basename}.sort.bed -g ${SH_SCRIPT_DIR}/../chrom_size/${assembly}.chrom.sizes > ${basename}.bg
