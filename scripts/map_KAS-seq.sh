@@ -206,12 +206,14 @@ samtools index ${basename}_rmdup.bam
 # filter unique mapped reads
 # samtools view -b -q 10 ${basename}_rmdup.bam > ${basename}_unique.bam
 
-echo "" >> ${basename}_KAS-seq_mapping_summary.txt
-echo "Average length of DNA fragments" >> ${basename}_KAS-seq_mapping_summary.txt
-samtools view -h  ${basename}_rmdup.bam | ${SH_SCRIPT_DIR}/../src/SAMtoBED  -i - -o  ${basename}.bed -x -v >> ${basename}_KAS-seq_mapping_summary.txt 2>&1
-# samtools view -h ${basename}_unique.bam | ${SH_SCRIPT_DIR}/../src/SAMtoBED  -i - -o  ${basename}.bed -x -v
-bedSort ${basename}.bed ${basename}.sort.bed
-genomeCoverageBed -bg -i ${basename}.sort.bed -g ${SH_SCRIPT_DIR}/../chrom_size/${assembly}.chrom.sizes > ${basename}.bg
+# echo "" >> ${basename}_KAS-seq_mapping_summary.txt
+# echo "Average length of DNA fragments" >> ${basename}_KAS-seq_mapping_summary.txt
+# samtools view -h  ${basename}_rmdup.bam | ${SH_SCRIPT_DIR}/../src/SAMtoBED  -i - -o  ${basename}.bed -x -v >> ${basename}_KAS-seq_mapping_summary.txt 2>&1
+# # samtools view -h ${basename}_unique.bam | ${SH_SCRIPT_DIR}/../src/SAMtoBED  -i - -o  ${basename}.bed -x -v
+# bedSort ${basename}.bed ${basename}.sort.bed
+# genomeCoverageBed -bg -i ${basename}.sort.bed -g ${SH_SCRIPT_DIR}/../chrom_size/${assembly}.chrom.sizes > ${basename}.bg
+
+bedtools genomecov -pc -bg -ibam ${basename}_rmdup.bam > ${basename}.bg
 
 rm -f *sam
 rm -f ${basename}_sorted.bam.bai
@@ -231,10 +233,10 @@ cd BedGraph_files
 mv ../${basename}/${basename}.bg ./
 cd ..
 
-mkdir -p Bed_files
-cd Bed_files
-mv ../${basename}/${basename}.sort.bed ./
-cd ..
+# mkdir -p Bed_files
+# cd Bed_files
+# mv ../${basename}/${basename}.sort.bed ./
+# cd ..
 
 mkdir -p Mapping_summary
 cd Mapping_summary
